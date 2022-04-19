@@ -16,7 +16,7 @@ jobs:
         path: "app"
     - run: "npm install"
       working-directory: "app"
-    - run: "npm run test -- --coverage --collectCoverageFrom=src/**"
+    - run: "npm run test -- --coverage --collectCoverageFrom=src/**/*.js"
       working-directory: "app"
       
     - name: Upload coverage to Codecov
