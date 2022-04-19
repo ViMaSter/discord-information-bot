@@ -1,22 +1,23 @@
-name: Running Code Coverage
+name: Deploy
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
-   runs-on: ubuntu-latest
-   env:
+  test:
+    runs-on: ubuntu-latest
+    env:
       NODE_ENV: test
-   steps:
-   
+    steps:
     - uses: actions/checkout@v3
       with:
         path: "app"
-        
     - run: "npm install"
       working-directory: "app"
-      
     - run: "npm run test -- --coverage"
+      working-directory: "app"
       
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
